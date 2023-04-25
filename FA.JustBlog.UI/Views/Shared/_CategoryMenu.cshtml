@@ -1,0 +1,11 @@
+﻿@using FA.JustBlog.Core.Models
+@using FA.JustBlog.Core.Repository.UnitOfWork
+@inject IUnitOfWork uow
+@{
+    IList<Categories> categories = uow.Category.GetAll();
+}
+
+@foreach (var item in categories)
+{
+    <li><a class="dropdown-item" href="/Post/PostByCategory?category=@item.Name">@item.Name</a></li>
+}
